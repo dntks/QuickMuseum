@@ -59,8 +59,8 @@ class QuickMuseumNavigationActions(private val navController: NavHostController)
     }
 
 
-    fun navigateToTaskDetail(taskId: String) {
-        navController.navigate("$ART_DETAILS_SCREEN/$taskId")
+    fun navigateToTaskDetail(artObjectNumber: String) {
+        navController.navigate("$ART_DETAILS_SCREEN/$artObjectNumber")
     }
 
 }

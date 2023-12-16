@@ -45,7 +45,6 @@ fun OverviewScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-//            .padding(horizontal = dimensionResource(id = R.dimen.horizontal_margin))
     ) {
         LazyColumn {
             val items = uiState.items

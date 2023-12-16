@@ -28,7 +28,9 @@ class OverviewViewModel @Inject constructor(
     val uiState: StateFlow<OverviewUiState> =
         overviewRepository.getCollectionFlow(CollectionRequest(pageSize = 100))
             .map { AsyncResource.Success(it) }
-            .catch<AsyncResource<List<ArtObjectListItem>>> { emit(AsyncResource.Error(R.string.loading_collection_error)) }
+            .catch<AsyncResource<List<ArtObjectListItem>>> {
+                emit(AsyncResource.Error(R.string.loading_collection_error))
+            }
             .map { taskAsync -> produceStatisticsUiState(taskAsync) }
             .stateIn(
                 scope = viewModelScope,

@@ -18,12 +18,13 @@ class OverviewRepository @Inject constructor(
 ){
     suspend fun getOverviewArtObjects(collectionRequest: CollectionRequest): List<ArtObjectListItem> {
         return withContext(dispatcher) {
-            remoteDataSource.getArticles(collectionRequest).artObjects.map {
+            remoteDataSource.getCollection(collectionRequest).artObjects.map {
                 ArtObjectListItem(
                     id = it.id,
                     title = it.title,
                     creator = it.principalOrFirstMaker,
-                    imageUrl = it.webImage?.url
+                    imageUrl = it.webImage?.url,
+                    objectNumber = it.objectNumber
                 )
             }
         }

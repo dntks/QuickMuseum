@@ -58,7 +58,7 @@ fun QuickMuseumNavGraph(
                 OverviewScreen(
                     userMessage = entry.arguments?.getInt(USER_MESSAGE_ARG)?: R.string.error,
                     onUserMessageDisplayed = { entry.arguments?.putInt(USER_MESSAGE_ARG, 0) },
-                    onArtItemClick = { art -> navActions.navigateToTaskDetail(art.id) },
+                    onArtItemClick = { art -> navActions.navigateToTaskDetail(art.objectNumber) },
                 )
         }
         composable(QuickMuseumDestinations.ART_DETAILS_ROUTE) {
