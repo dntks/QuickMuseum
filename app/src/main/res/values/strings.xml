@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Quick Museum</string>
+    <string name="loading_collection_error">Couldn\'t reach the rijks collection. Try again later.</string>
+    <string name="error">Some error happened, please try again later.</string>
+</resources>
