@@ -25,8 +25,6 @@ fun ArtDetailsTopBar(title: String, onBack: () -> Unit) {
                 Icon(Icons.Filled.ArrowBack, stringResource(id = R.string.menu_back))
             }
         },
-        actions = {
-        },
         modifier = Modifier.fillMaxWidth()
     )
 }
