@@ -15,12 +15,13 @@ class RemoteDataSource @Inject constructor(
             searchType = collectionRequest.searchType,
             page = collectionRequest.page,
             pageSize = collectionRequest.pageSize,
-//            language = collectionRequest.language
+            language = collectionRequest.language
         )
     }
     suspend fun getArtDetails(artDetailsRequest: ArtDetailsRequest): ArtDetailsResponse {
         return rijksMuseumApi.getArtDetails(
             artObjectNumber = artDetailsRequest.artObjectNumber,
+            language = artDetailsRequest.language
         )
     }
 }
