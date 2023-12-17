@@ -2,7 +2,12 @@
     <string name="app_name">Quick Museum</string>
     <string name="loading_collection_error">Couldn\'t reach the rijks collection. Try again later.</string>
     <string name="error">Some error happened, please try again later.</string>
-    <string name="art_details_not_found">Art details not found.</string>
-    <string name="loading_art_error">An error occured while loading the art.</string>
+    <string name="art_details_not_found">Art details not found. Please check your internet connection and try again later.</string>
+    <string name="loading_art_error">An error occurred while loading the art.</string>
     <string name="menu_back">back</string>
+    <string name="load_more">Load more art!</string>
+    <string name="loading">Loading…</string>
+    <string name="no_art_found">No results found. Please check your internet connection and try again later.</string>
+    <string name="image_background_label">image background\n</string>
+    <string name="image_background_transition">loading image shimmer\n</string>
 </resources>

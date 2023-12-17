@@ -1,5 +1,6 @@
 package com.dtks.quickmuseum.data.repository
 
+import android.util.Size
 import com.dtks.quickmuseum.data.RemoteDataSource
 import com.dtks.quickmuseum.data.model.ArtDetailsRequest
 import com.dtks.quickmuseum.di.DefaultDispatcher
@@ -30,7 +31,10 @@ class ArtDetailsRepository @Inject constructor(
                 materials = artDetails.materials,
                 techniques = artDetails.techniques,
                 dating = artDetails.dating?.presentingDate,
-                imageUrl = artDetails.webImage?.url
+                imageUrl = artDetails.webImage?.url,
+                imageSize = artDetails.webImage?.let {image ->
+                    Size(image.width,image.height)
+                }
             )
         }
     }

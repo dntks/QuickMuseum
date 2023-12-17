@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -27,10 +28,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.dtks.quickmuseum.R
 import com.dtks.quickmuseum.ui.QuickMuseumDestinationsArgs.USER_MESSAGE_ARG
 import com.dtks.quickmuseum.ui.details.ArtDetailScreen
 import com.dtks.quickmuseum.ui.overview.OverviewScreen
+import com.dtks.quickmuseum.ui.overview.OverviewViewModel
 
 @Composable
 fun QuickMuseumNavGraph(
@@ -39,11 +40,10 @@ fun QuickMuseumNavGraph(
     startDestination: String = QuickMuseumDestinations.ARTS_ROUTE,
     navActions: QuickMuseumNavigationActions = remember(navController) {
         QuickMuseumNavigationActions(navController)
-    }
+    },
+    viewModel: OverviewViewModel = hiltViewModel(),
 ) {
     val currentNavBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = currentNavBackStackEntry?.destination?.route ?: startDestination
-
     NavHost(
         navController = navController,
         startDestination = startDestination,
@@ -54,11 +54,10 @@ fun QuickMuseumNavGraph(
             arguments = listOf(
                 navArgument(USER_MESSAGE_ARG) { type = NavType.IntType; defaultValue = 0 }
             )
-        ) { entry ->
-                OverviewScreen(
-                    userMessage = entry.arguments?.getInt(USER_MESSAGE_ARG)?: R.string.error,
-                    onUserMessageDisplayed = { entry.arguments?.putInt(USER_MESSAGE_ARG, 0) },
+        ) {
+            OverviewScreen(
                     onArtItemClick = { art -> navActions.navigateToTaskDetail(art.objectNumber) },
+                    viewModel = viewModel
                 )
         }
         composable(QuickMuseumDestinations.ART_DETAILS_ROUTE) {

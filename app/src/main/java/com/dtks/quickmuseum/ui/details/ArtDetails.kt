@@ -1,5 +1,7 @@
 package com.dtks.quickmuseum.ui.details
 
+import android.util.Size
+
 data class ArtDetails(
     val id: String,
     val objectNumber: String,
@@ -8,5 +10,6 @@ data class ArtDetails(
     val materials: List<String>?,
     val techniques: List<String>?,
     val dating: String?,
-    val imageUrl: String? = null
+    val imageUrl: String? = null,
+    val imageSize: Size?
 )

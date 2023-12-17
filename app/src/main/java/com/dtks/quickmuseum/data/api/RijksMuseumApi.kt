@@ -8,21 +8,23 @@ import retrofit2.http.Query
 
 interface RijksMuseumApi {
 
-    @GET("collection")
+    @GET("{culture}/collection")
     suspend fun getCollection(
+        @Path("culture")
+        language: String = "en",
         @Query("s")
-        searchType: String = "artist",
+        searchType: String = "relevance",
         @Query("p")
         page: Int = 0,
         @Query("ps")
         pageSize: Int = 10,
-//        @Path("culture")
-//        language: String = "nl",
         @Query("key")
         apiKey: String = API_KEY
     ): CollectionResponse
-    @GET("collection/{artObjectNumber}")
+    @GET("{culture}/collection/{artObjectNumber}")
     suspend fun getArtDetails(
+        @Path("culture")
+        language: String = "en",
         @Path("artObjectNumber")
         artObjectNumber: String,
         @Query("key")

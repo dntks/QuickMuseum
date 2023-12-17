@@ -20,7 +20,6 @@ class RemoteDataSource @Inject constructor(
     }
     suspend fun getArtDetails(artDetailsRequest: ArtDetailsRequest): ArtDetailsResponse {
         return rijksMuseumApi.getArtDetails(
-//            language = artDetailsRequest.language,
             artObjectNumber = artDetailsRequest.artObjectNumber,
         )
     }

@@ -49,12 +49,11 @@ data class ArtDetailsUiState(
  */
 @HiltViewModel
 class ArtDetailViewModel @Inject constructor(
-    private val artDetailsRepository: ArtDetailsRepository,
+    artDetailsRepository: ArtDetailsRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    val artObjectNumber: String = savedStateHandle[QuickMuseumDestinationsArgs.ART_ID_ARG]!!
-
+    private val artObjectNumber: String = savedStateHandle[QuickMuseumDestinationsArgs.ART_ID_ARG]!!
     private val _userMessage: MutableStateFlow<Int?> = MutableStateFlow(null)
     private val _isLoading = MutableStateFlow(false)
     private val _taskAsync = artDetailsRepository.getArtDetailsFlow(
@@ -96,10 +95,6 @@ class ArtDetailViewModel @Inject constructor(
 
     fun snackbarMessageShown() {
         _userMessage.value = null
-    }
-
-    private fun showSnackbarMessage(message: Int) {
-        _userMessage.value = message
     }
 
     private fun handleArtDetails(artDetails: ArtDetails?): AsyncResource<ArtDetails?> {
