@@ -1,6 +1,5 @@
 package com.dtks.quickmuseum.ui.overview
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -20,7 +19,7 @@ import com.dtks.quickmuseum.R
 import com.dtks.quickmuseum.ui.EmptyContent
 import com.dtks.quickmuseum.ui.loading.LoadingContent
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OverviewScreen(
     onArtItemClick: (ArtObjectListItem) -> Unit,

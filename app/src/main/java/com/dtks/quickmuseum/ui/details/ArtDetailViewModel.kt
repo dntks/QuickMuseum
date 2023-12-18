@@ -22,7 +22,7 @@ import androidx.lifecycle.viewModelScope
 import com.dtks.quickmuseum.R
 import com.dtks.quickmuseum.data.model.ArtDetailsRequest
 import com.dtks.quickmuseum.data.repository.ArtDetailsRepository
-import com.dtks.quickmuseum.ui.QuickMuseumDestinationsArgs
+import com.dtks.quickmuseum.ui.navigation.QuickMuseumDestinationsArgs
 import com.dtks.quickmuseum.utils.AsyncResource
 import com.dtks.quickmuseum.utils.WhileUiSubscribed
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -34,19 +34,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
-/**
- * UiState for the Details screen.
- */
-data class ArtDetailsUiState(
-    val artDetails: ArtDetails? = null,
-    val isLoading: Boolean = false,
-    val userMessage: Int? = null,
-    val isTaskDeleted: Boolean = false
-)
-
-/**
- * ViewModel for the Details screen.
- */
 @HiltViewModel
 class ArtDetailViewModel @Inject constructor(
     artDetailsRepository: ArtDetailsRepository,

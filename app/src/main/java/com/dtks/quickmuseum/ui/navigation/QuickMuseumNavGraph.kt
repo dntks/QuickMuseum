@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.dtks.quickmuseum.ui
+package com.dtks.quickmuseum.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,8 +28,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.dtks.quickmuseum.ui.QuickMuseumDestinationsArgs.USER_MESSAGE_ARG
 import com.dtks.quickmuseum.ui.details.ArtDetailScreen
+import com.dtks.quickmuseum.ui.navigation.QuickMuseumDestinationsArgs.USER_MESSAGE_ARG
 import com.dtks.quickmuseum.ui.overview.OverviewScreen
 import com.dtks.quickmuseum.ui.overview.OverviewViewModel
 
@@ -56,7 +56,7 @@ fun QuickMuseumNavGraph(
             )
         ) {
             OverviewScreen(
-                    onArtItemClick = { art -> navActions.navigateToTaskDetail(art.objectNumber) },
+                    onArtItemClick = { art -> navActions.navigateToArtDetail(art.objectNumber) },
                     viewModel = viewModel
                 )
         }

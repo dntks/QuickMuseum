@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package com.dtks.quickmuseum.ui
+package com.dtks.quickmuseum.ui.navigation
 
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.dtks.quickmuseum.ui.QuickMuseumDestinationsArgs.ART_ID_ARG
-import com.dtks.quickmuseum.ui.QuickMuseumDestinationsArgs.USER_MESSAGE_ARG
-import com.dtks.quickmuseum.ui.QuickMuseumScreens.ARTS_SCREEN
-import com.dtks.quickmuseum.ui.QuickMuseumScreens.ART_DETAILS_SCREEN
+import com.dtks.quickmuseum.ui.navigation.QuickMuseumDestinationsArgs.ART_ID_ARG
+import com.dtks.quickmuseum.ui.navigation.QuickMuseumDestinationsArgs.USER_MESSAGE_ARG
+import com.dtks.quickmuseum.ui.navigation.QuickMuseumScreens.ARTS_SCREEN
+import com.dtks.quickmuseum.ui.navigation.QuickMuseumScreens.ART_DETAILS_SCREEN
 
 private object QuickMuseumScreens {
     const val ARTS_SCREEN = "arts"
@@ -30,7 +29,6 @@ private object QuickMuseumScreens {
 object QuickMuseumDestinationsArgs {
     const val USER_MESSAGE_ARG = "userMessage"
     const val ART_ID_ARG = "artId"
-    const val TITLE_ARG = "title"
 }
 object QuickMuseumDestinations {
     const val ARTS_ROUTE = "$ARTS_SCREEN?$USER_MESSAGE_ARG={$USER_MESSAGE_ARG}"
@@ -42,24 +40,7 @@ object QuickMuseumDestinations {
  */
 class QuickMuseumNavigationActions(private val navController: NavHostController) {
 
-    fun navigateToArtsList(userMessage: Int = 0) {
-        val navigatesFromDrawer = userMessage == 0
-        navController.navigate(
-            ARTS_SCREEN.let {
-                if (userMessage != 0) "$it?$USER_MESSAGE_ARG=$userMessage" else it
-            }
-        ) {
-            popUpTo(navController.graph.findStartDestination().id) {
-                inclusive = !navigatesFromDrawer
-                saveState = navigatesFromDrawer
-            }
-            launchSingleTop = true
-            restoreState = navigatesFromDrawer
-        }
-    }
-
-
-    fun navigateToTaskDetail(artObjectNumber: String) {
+    fun navigateToArtDetail(artObjectNumber: String) {
         navController.navigate("$ART_DETAILS_SCREEN/$artObjectNumber")
     }
 

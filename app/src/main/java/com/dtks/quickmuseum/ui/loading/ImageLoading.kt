@@ -27,7 +27,7 @@ fun ImageLoading(modifier: Modifier) {
         initialValue = MaterialTheme.colorScheme.primaryContainer,
         targetValue = MaterialTheme.colorScheme.inversePrimary,
         animationSpec = infiniteRepeatable(
-            animation = tween(100),
+            animation = tween(1000),
             repeatMode = RepeatMode.Reverse
         ),
         label = stringResource(id = R.string.image_background_label)

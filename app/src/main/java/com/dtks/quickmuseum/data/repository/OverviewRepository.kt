@@ -1,6 +1,5 @@
 package com.dtks.quickmuseum.data.repository
 
-import android.util.Size
 import com.dtks.quickmuseum.data.RemoteDataSource
 import com.dtks.quickmuseum.data.model.CollectionRequest
 import com.dtks.quickmuseum.di.DefaultDispatcher
@@ -25,20 +24,13 @@ class OverviewRepository @Inject constructor(
                     title = it.title,
                     creator = it.principalOrFirstMaker,
                     imageUrl = it.webImage?.url,
-                    objectNumber = it.objectNumber,
-                    imageSize = it.webImage?.let {image ->
-                        Size(image.width,image.height)
-                    }
+                    objectNumber = it.objectNumber
                 )
             }
         }
     }
 
     fun getCollectionFlow(collectionRequest: CollectionRequest): Flow<List<ArtObjectListItem>> = flow {
-        emit(getOverviewArtObjects(collectionRequest))
-    }
-
-    fun loadMoreItemsFlow(collectionRequest: CollectionRequest): Flow<List<ArtObjectListItem>> = flow {
         emit(getOverviewArtObjects(collectionRequest))
     }
 }

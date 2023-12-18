@@ -1,10 +1,10 @@
 package com.dtks.quickmuseum.data.repository
 
-import android.util.Size
 import com.dtks.quickmuseum.data.RemoteDataSource
 import com.dtks.quickmuseum.data.model.ArtDetailsRequest
 import com.dtks.quickmuseum.di.DefaultDispatcher
 import com.dtks.quickmuseum.ui.details.ArtDetails
+import com.dtks.quickmuseum.ui.details.ArtDetailsImage
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -31,9 +31,12 @@ class ArtDetailsRepository @Inject constructor(
                 materials = artDetails.materials,
                 techniques = artDetails.techniques,
                 dating = artDetails.dating?.presentingDate,
-                imageUrl = artDetails.webImage?.url,
-                imageSize = artDetails.webImage?.let {image ->
-                    Size(image.width,image.height)
+                image = artDetails.webImage?.let {
+                    ArtDetailsImage(
+                        url = it.url,
+                        width = it.width,
+                        height = it.height
+                    )
                 }
             )
         }

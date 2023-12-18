@@ -18,13 +18,6 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-data class OverviewUiState(
-    val userMessage: Int? = null,
-    val isEmpty: Boolean = false,
-    val isLoading: Boolean = false,
-    val items: List<ArtObjectListItem> = emptyList(),
-)
-
 @HiltViewModel
 class OverviewViewModel @Inject constructor(
     private val overviewRepository: OverviewRepository
@@ -33,7 +26,9 @@ class OverviewViewModel @Inject constructor(
     private val currentPage = MutableStateFlow(1)
 
     private val initialState = overviewRepository.getCollectionFlow(CollectionRequest())
-        .map { AsyncResource.Success(it) }
+        .map {
+            AsyncResource.Success(it)
+        }
         .catch<AsyncResource<List<ArtObjectListItem>>> {
             emit(AsyncResource.Error(R.string.loading_collection_error))
         }
@@ -80,7 +75,7 @@ class OverviewViewModel @Inject constructor(
         _isLoading.value = true
 
         viewModelScope.launch {
-            overviewRepository.loadMoreItemsFlow(
+            overviewRepository.getCollectionFlow(
                 CollectionRequest(
                     page = currentPage.value + 1
                 )

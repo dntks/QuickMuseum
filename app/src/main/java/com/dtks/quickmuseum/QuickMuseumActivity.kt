@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
-import com.dtks.quickmuseum.ui.QuickMuseumNavGraph
+import com.dtks.quickmuseum.ui.navigation.QuickMuseumNavGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

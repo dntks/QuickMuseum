@@ -95,7 +95,7 @@ private fun ArtDetailsComposable(artDetails: ArtDetails?, size: IntSize) {
     artDetails?.let {
         Row {
 
-            val heightToWidthRatio = artDetails.imageSize?.let {
+            val heightToWidthRatio = artDetails.image?.let {
                 if (it.height != 0 && it.width != 0) {
                     it.height.toFloat() / it.width.toFloat()
                 } else {
@@ -115,7 +115,7 @@ private fun ArtDetailsComposable(artDetails: ArtDetails?, size: IntSize) {
             }
             SubcomposeAsyncImage(
                 modifier = imageModifier,
-                model = artDetails.imageUrl,
+                model = artDetails.image?.url,
                 loading = {
                     ImageLoading(
                         Modifier
